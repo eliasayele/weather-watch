@@ -26,7 +26,6 @@ class Person {
   final int age;
 
   Person({required this.name, required this.age});
-
 }
 
 //
