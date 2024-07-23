@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:weather_watch/service_locator.dart';
 import 'package:weather_watch/weather/presentation/pages/weather_page.dart';
 
-void main() {
+void main() async {
+  // Ensure that the dependencies are initialized
+  await setUpServiceLocator();
   runApp(const MyApp());
 }
 
