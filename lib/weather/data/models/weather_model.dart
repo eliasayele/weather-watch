@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:weather_watch/weather/domain/entities/weather.dart';
 
 part 'weather_model.g.dart';
 
@@ -37,7 +38,12 @@ class WeatherModel {
   factory WeatherModel.fromJson(Map<String, dynamic> json) => _$WeatherModelFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
 
-
+  Weather toEntity() {
+    return Weather(
+      temperature: main.temp,
+      locationName: name,
+    );
+  }
 }
 
 @JsonSerializable()
