@@ -12,3 +12,4 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     });
   }
 }
+
