@@ -4,43 +4,44 @@ import 'package:weather_watch/weather/domain/entities/weather.dart';
 part 'weather_model.g.dart';
 
 @JsonSerializable()
-class WeatherModel {
-  final Coord coord;
-  final List<WeatherDescription> weather;
-  final String base;
-  final MainWeather main;
-  final int visibility;
-  final Wind wind;
-  final Clouds clouds;
-  final int dt;
-  final Sys sys;
-  final int timezone;
-  final int id;
-  final String name;
-  final int cod;
+class WeatherModel extends Weather {
+  final Coord? coord;
+  final List<WeatherDescription>? weather;
+  final String? base;
+  final MainWeather? main;
+  final int? visibility;
+  final Wind? wind;
+  final Clouds? clouds;
+  final int? dt;
+  final Sys? sys;
+  final int? timezone;
+  final int? id;
+  final String? name;
+  final int? cod;
 
-  WeatherModel({
-    required this.coord,
-    required this.weather,
-    required this.base,
-    required this.main,
-    required this.visibility,
-    required this.wind,
-    required this.clouds,
-    required this.dt,
-    required this.sys,
-    required this.timezone,
-    required this.id,
-    required this.name,
-    required this.cod,
+  const WeatherModel({
+    this.coord,
+    this.weather,
+    this.base,
+    this.main,
+    this.visibility,
+    this.wind,
+    this.clouds,
+    this.dt,
+    this.sys,
+    this.timezone,
+    this.id,
+    this.name,
+    this.cod,
   });
 
-  factory WeatherModel.fromJson(Map<String, dynamic> json) => _$WeatherModelFromJson(json);
+  factory WeatherModel.fromJson(Map<String, dynamic> json) =>
+      _$WeatherModelFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
 
   Weather toEntity() {
     return Weather(
-      temperature: main.temp,
+      temperature: main?.temp,
       locationName: name,
     );
   }
@@ -71,7 +72,8 @@ class WeatherDescription {
     required this.icon,
   });
 
-  factory WeatherDescription.fromJson(Map<String, dynamic> json) => _$WeatherDescriptionFromJson(json);
+  factory WeatherDescription.fromJson(Map<String, dynamic> json) =>
+      _$WeatherDescriptionFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherDescriptionToJson(this);
 }
 
@@ -102,7 +104,8 @@ class MainWeather {
     this.grndLevel,
   });
 
-  factory MainWeather.fromJson(Map<String, dynamic> json) => _$MainWeatherFromJson(json);
+  factory MainWeather.fromJson(Map<String, dynamic> json) =>
+      _$MainWeatherFromJson(json);
   Map<String, dynamic> toJson() => _$MainWeatherToJson(this);
 }
 

@@ -7,21 +7,31 @@ part of 'weather_model.dart';
 // **************************************************************************
 
 WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) => WeatherModel(
-      coord: Coord.fromJson(json['coord'] as Map<String, dynamic>),
-      weather: (json['weather'] as List<dynamic>)
-          .map((e) => WeatherDescription.fromJson(e as Map<String, dynamic>))
+      coord: json['coord'] == null
+          ? null
+          : Coord.fromJson(json['coord'] as Map<String, dynamic>),
+      weather: (json['weather'] as List<dynamic>?)
+          ?.map((e) => WeatherDescription.fromJson(e as Map<String, dynamic>))
           .toList(),
-      base: json['base'] as String,
-      main: MainWeather.fromJson(json['main'] as Map<String, dynamic>),
-      visibility: (json['visibility'] as num).toInt(),
-      wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
-      clouds: Clouds.fromJson(json['clouds'] as Map<String, dynamic>),
-      dt: (json['dt'] as num).toInt(),
-      sys: Sys.fromJson(json['sys'] as Map<String, dynamic>),
-      timezone: (json['timezone'] as num).toInt(),
-      id: (json['id'] as num).toInt(),
-      name: json['name'] as String,
-      cod: (json['cod'] as num).toInt(),
+      base: json['base'] as String?,
+      main: json['main'] == null
+          ? null
+          : MainWeather.fromJson(json['main'] as Map<String, dynamic>),
+      visibility: (json['visibility'] as num?)?.toInt(),
+      wind: json['wind'] == null
+          ? null
+          : Wind.fromJson(json['wind'] as Map<String, dynamic>),
+      clouds: json['clouds'] == null
+          ? null
+          : Clouds.fromJson(json['clouds'] as Map<String, dynamic>),
+      dt: (json['dt'] as num?)?.toInt(),
+      sys: json['sys'] == null
+          ? null
+          : Sys.fromJson(json['sys'] as Map<String, dynamic>),
+      timezone: (json['timezone'] as num?)?.toInt(),
+      id: (json['id'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      cod: (json['cod'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$WeatherModelToJson(WeatherModel instance) =>
