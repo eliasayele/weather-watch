@@ -21,17 +21,18 @@ class _WeatherApiService implements WeatherApiService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<WeatherModel>> getWeather(
-    double lat,
-    double lon,
-    String apiKey,
-  ) async {
+  Future<HttpResponse<WeatherModel>> getWeather({
+    double? lat,
+    double? lon,
+    String? apiKey,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'lat': lat,
       r'lon': lon,
       r'appid': apiKey,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(

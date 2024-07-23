@@ -23,9 +23,9 @@ abstract class WeatherApiService {
   ///
   /// Returns a [Future] that completes with an [HttpResponse] containing a [WeatherModel] object.
   @GET("/weather")
-  Future<HttpResponse<WeatherModel>> getWeather(
-    @Query("lat") double lat,
-    @Query("lon") double lon,
-    @Query("appid") String apiKey,
-  );
+  Future<HttpResponse<WeatherModel>> getWeather({
+    @Query("lat") double? lat,
+    @Query("lon") double? lon,
+    @Query("appid") String? apiKey,
+  });
 }
