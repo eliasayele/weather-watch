@@ -27,4 +27,7 @@ Future<void> setUpServiceLocator() async {
 
   // Register the WeatherBloc for managing weather-related UI state
   sl.registerFactory<WeatherBloc>(() => WeatherBloc(sl()));
+
+  //Register cubit
+  sl.registerSingleton<TemperatureUnitCubit>(TemperatureUnitCubit());
 }

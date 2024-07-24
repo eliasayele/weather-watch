@@ -14,9 +14,7 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) => WeatherModel(
           ?.map((e) => WeatherDescription.fromJson(e as Map<String, dynamic>))
           .toList(),
       base: json['base'] as String?,
-      main: json['main'] == null
-          ? null
-          : MainWeather.fromJson(json['main'] as Map<String, dynamic>),
+      main: MainWeather.fromJson(json['main'] as Map<String, dynamic>),
       visibility: (json['visibility'] as num?)?.toInt(),
       wind: json['wind'] == null
           ? null
@@ -30,7 +28,7 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) => WeatherModel(
           : Sys.fromJson(json['sys'] as Map<String, dynamic>),
       timezone: (json['timezone'] as num?)?.toInt(),
       id: (json['id'] as num?)?.toInt(),
-      name: json['name'] as String?,
+      name: json['name'] as String,
       cod: (json['cod'] as num?)?.toInt(),
     );
 

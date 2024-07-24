@@ -8,7 +8,7 @@ class WeatherModel extends Weather {
   final Coord? coord;
   final List<WeatherDescription>? weather;
   final String? base;
-  final MainWeather? main;
+  final MainWeather main;
   final int? visibility;
   final Wind? wind;
   final Clouds? clouds;
@@ -16,14 +16,14 @@ class WeatherModel extends Weather {
   final Sys? sys;
   final int? timezone;
   final int? id;
-  final String? name;
+  final String name;
   final int? cod;
 
-  const WeatherModel({
+  WeatherModel({
     this.coord,
     this.weather,
     this.base,
-    this.main,
+    required this.main,
     this.visibility,
     this.wind,
     this.clouds,
@@ -31,20 +31,16 @@ class WeatherModel extends Weather {
     this.sys,
     this.timezone,
     this.id,
-    this.name,
+    required this.name,
     this.cod,
-  });
+  }) : super(
+          temperature: main.temp,
+          locationName: name,
+        );
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) =>
       _$WeatherModelFromJson(json);
   Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
-
-  Weather toEntity() {
-    return Weather(
-      temperature: main?.temp,
-      locationName: name,
-    );
-  }
 }
 
 @JsonSerializable()

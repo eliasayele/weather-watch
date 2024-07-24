@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_watch/config/theme.dart';
 import 'package:weather_watch/service_locator.dart';
+import 'package:weather_watch/weather/presentation/blocs/blocs.dart';
 import 'package:weather_watch/weather/presentation/pages/weather_page.dart';
 
 void main() async {
@@ -15,20 +18,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      theme: AppTheme.lightTheme,
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider<WeatherBloc>(
+            create: (context) => sl<WeatherBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<TemperatureUnitCubit>(),
+          )
+        ],
+        child: const WeatherPage(),
       ),
-      home: const WeatherPage(),
     );
   }
 }
-
-class Person {
-  final String name;
-  final int age;
-
-  Person({required this.name, required this.age});
-}
-
-//
