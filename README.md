@@ -35,6 +35,7 @@ Weather Watch is a Flutter application that displays current weather information
 
    ```bash
    flutter pub get
+   dart run build_runner build
    ```
 
 4. **Run the app:**
