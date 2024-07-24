@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:weather_watch/core/constants/constants.dart';
 import 'package:weather_watch/core/resources/data_state.dart';
 import 'package:weather_watch/weather/data/data_sources/remote/weather_api.dart';
@@ -12,6 +13,7 @@ class WeatherRepositoryImpl implements WeatherRepository {
   WeatherRepositoryImpl(this._weatherApiService);
   @override
   Future<DataState<Weather>> fetchWeather(double lat, double lon) async {
+    final String weatherApiKey = dotenv.env['WEATHER_API_KEY'] ?? '';
     final httpResponse = await _weatherApiService.getWeather(
       lat: latitude,
       lon: longitude,

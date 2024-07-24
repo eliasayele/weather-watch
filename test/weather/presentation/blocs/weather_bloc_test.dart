@@ -41,7 +41,8 @@ void main() {
     blocTest<WeatherBloc, WeatherState>(
       'emits [WeatherLoading, WeatherLoaded] when weather data is fetched successfully',
       build: () {
-        when(() => mockGetWeather(testLat, testLon)).thenAnswer((_) async => const DataSuccess(testWeather));
+        when(() => mockGetWeather(testLat, testLon))
+            .thenAnswer((_) async => const DataSuccess(testWeather));
         return weatherBloc;
       },
       act: (bloc) => bloc.add(FetchWeather(lat: testLat, lon: testLon)),
@@ -58,7 +59,8 @@ void main() {
       'emits [WeatherLoading, WeatherError] when fetching weather data fails',
       build: () {
         final error = DioException(requestOptions: RequestOptions(path: ''));
-        when(() => mockGetWeather(testLat, testLon)).thenAnswer((_) async => DataFailed(error));
+        when(() => mockGetWeather(testLat, testLon))
+            .thenAnswer((_) async => DataFailed(error));
         return weatherBloc;
       },
       act: (bloc) => bloc.add(FetchWeather(lat: testLat, lon: testLon)),

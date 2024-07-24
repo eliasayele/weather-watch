@@ -16,9 +16,11 @@ import 'package:weather_watch/weather/domain/entities/weather.dart';
 import 'package:weather_watch/service_locator.dart';
 
 // Mock classes
-class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState> implements WeatherBloc {}
+class MockWeatherBloc extends MockBloc<WeatherEvent, WeatherState>
+    implements WeatherBloc {}
 
-class MockTemperatureUnitCubit extends MockCubit<bool> implements TemperatureUnitCubit {
+class MockTemperatureUnitCubit extends MockCubit<bool>
+    implements TemperatureUnitCubit {
   @override
   bool get isCelsius => state;
 }
@@ -48,7 +50,8 @@ void main() {
     sl.reset();
   });
 
-  testWidgets('WeatherPage displays weather information correctly', (WidgetTester tester) async {
+  testWidgets('WeatherPage displays weather information correctly',
+      (WidgetTester tester) async {
     // Arrange
     const testWeather = Weather(temperature: 20.0, locationName: 'Test City');
 
