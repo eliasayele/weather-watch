@@ -37,8 +37,7 @@ class _WeatherPageState extends State<WeatherPage> {
           children: [
             SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(Dimensions.pagePadding)
-                    .copyWith(bottom: 80),
+                padding: const EdgeInsets.all(Dimensions.pagePadding).copyWith(bottom: 80),
                 child: BlocBuilder<TemperatureUnitCubit, bool>(
                   bloc: _tempCubit,
                   builder: (context, isCelsius) {
@@ -51,10 +50,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             const ResponsiveImage(),
                             const SizedBox(height: Dimensions.verticalSpacing),
                             Center(
-                              child: Text('THIS IS MY WEATHER APP',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium),
+                              child: Text('THIS IS MY WEATHER APP', style: Theme.of(context).textTheme.headlineMedium),
                             ),
                             const SizedBox(height: Dimensions.verticalSpacing),
                             WeatherDisplay(state: state, isCelsius: isCelsius),
@@ -72,9 +68,7 @@ class _WeatherPageState extends State<WeatherPage> {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.all(Dimensions.pagePadding),
-                child: RefreshButton(
-                    onPressed: () => _weatherBloc
-                        .add(FetchWeather(lat: latitude, lon: longitude))),
+                child: RefreshButton(onPressed: () => _weatherBloc.add(FetchWeather(lat: latitude, lon: longitude))),
               ),
             ),
           ],
