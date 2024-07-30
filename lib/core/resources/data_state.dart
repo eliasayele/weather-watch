@@ -27,3 +27,5 @@ class DataFailed<T> extends DataState<T> {
   /// Creates a new [DataFailed] instance with the provided [error].
   const DataFailed(DioException error) : super(error: error);
 }
+
+///alternative we can use Either from dartz package,

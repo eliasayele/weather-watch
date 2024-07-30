@@ -26,6 +26,7 @@ abstract class WeatherApiService {
   Future<HttpResponse<WeatherModel>> getWeather({
     @Query("lat") double? lat,
     @Query("lon") double? lon,
+    @Query("units") String units = "metric",
     @Query("appid") String? apiKey,
   });
 }

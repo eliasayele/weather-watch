@@ -5,8 +5,7 @@ class WeatherDisplay extends StatelessWidget {
   final WeatherState state;
   final bool isCelsius;
 
-  const WeatherDisplay(
-      {super.key, required this.state, required this.isCelsius});
+  const WeatherDisplay({super.key, required this.state, required this.isCelsius});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +25,7 @@ class WeatherDisplay extends StatelessWidget {
             style: textTheme.bodyLarge,
           ),
           Text('Location', style: textTheme.titleLarge),
-          Text(weatherState.weather.locationName ?? 'Unknown',
-              style: textTheme.bodyLarge),
+          Text(weatherState.weather.locationName ?? 'Unknown', style: textTheme.bodyLarge),
         ],
       );
     } else if (state is WeatherError) {

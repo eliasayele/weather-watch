@@ -24,12 +24,14 @@ class _WeatherApiService implements WeatherApiService {
   Future<HttpResponse<WeatherModel>> getWeather({
     double? lat,
     double? lon,
+    String units = "metric",
     String? apiKey,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'lat': lat,
       r'lon': lon,
+      r'units': units,
       r'appid': apiKey,
     };
     queryParameters.removeWhere((k, v) => v == null);
